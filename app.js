@@ -22,7 +22,8 @@ app.get("/", function (req, res) {
 function fixProfanity(string){
 badWords.forEach((str)=>{
     console.log(str);
-    string = string.replace(str, new Array(str.length + 1).join('*'));
+    var pattern = new RegExp(str, 'gi');
+    string = string.replace(pattern, new Array(str.length + 1).join('*'));
 })
 return string;
 
