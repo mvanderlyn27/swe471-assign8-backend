@@ -2,6 +2,7 @@ var express = require("express");
 var fs = require("fs");
 var url = require("url");
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var multer = require('multer');
 var upload = multer();
 var port = process.env.PORT || 3000;
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 app.use(upload.array()); 
-
+app.use(cors());
 app.get("/", function (req, res) {
  res.send(JSON.stringify({ Hello: "World"}));
 });
